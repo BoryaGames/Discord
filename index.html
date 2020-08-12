@@ -111,7 +111,7 @@ infoOfRole(rl.id);
 }
 function chat() {
 var need_ch = prompt("ID чата:");
-document.body.innerHTML = "<center><div id='messages'></div><br/><button onclick=\"sendMessage('" + need_ch + "');\">Написать</button></center>";
+document.body.innerHTML = "<center><div id='messages'></div><br/><button onclick=\"sendMessage('" + need_ch + "');\">Написать</button> <button onclick=\"sendMessageEmbed('" + need_ch + "');\">Отправить Embed</button></center>";
 cl.on("message",msg => {
 if (msg.channel.id == need_ch && msg.guild.id == serv.id) {
 document.querySelector('#messages').innerHTML += "[" + msg.member.user.username + "] " + msg.content + "<button onclick=\"delMsg('" + msg.channel.id + "','" + msg.id + "');\">Удалить</button><br/>";
@@ -120,6 +120,13 @@ document.querySelector('#messages').innerHTML += "[" + msg.member.user.username 
 }
 function sendMessage(id) {
 cl.channels.cache.get(id).send(prompt("Текст:"));
+}
+function sendMessageEmbed(id) {
+var em = new Discord.MessageEmbed();
+em.setTitle(prompt("Заголовок: )
+em.setDescription(prompt("Описание: "));
+em.setColor(prompt("Цвет: "));
+cl.channels.cache.get(id).send("",em);
 }
 function delMsg(id,id2) {
 cl.channels.cache.get(id).messages.cache.get(id2).delete().then(function(){alert("Успешно!");}).catch(function(){alert("Ошибка!");});
