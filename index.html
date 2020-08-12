@@ -46,11 +46,12 @@ cl.on("ready",start);
 function infoOfUser(id) {
 usr = serv.members.cache.get(id);
 var znk = "";
-if (serv.ownerID == usr.user.id) { znk += "<font color='red'>Владелец Сервера</font>"; }
-if (usr.user.bot && znk == "") { znk += "<font color='blue'>БОТ</font>"; } else {
-if (usr.user.bot && znk != "") { znk += "<br/><font color='blue'>БОТ</font>"; }
+var dbs = "<br/><button onclick='kickUser();'>Кик</button><br/><button onclick='banUser();'>Бан</button>";
+if (serv.ownerID == usr.user.id) { znk += "<font color='red'>Владелец Сервера</font>"; dbs = ""; }
+if (usr.user.bot && znk == "") { znk += "<font color='blue'>БОТ</font>"; dbs = "<br/><button onclick='kickUser();'>Удалить</button><br/><button onclick='banUser();'>Бан</button>"; } else {
+if (usr.user.bot && znk != "") { znk += "<br/><font color='blue'>БОТ</font>"; dbs = ""; }
 }
-document.body.innerHTML = "<center>Участник сервера:<br/><img width='50px' height='50px' src='" + usr.user.displayAvatarURL() + "'><br/><b>" + usr.user.tag + "</b><br/>" + znk + "<br/>" + usr.user.id + "<br/><button onclick='kickUser();'>Кик</button><br/><button onclick='banUser();'>Бан</button><br/><button onclick='members();'>Назад</button></center>";
+document.body.innerHTML = "<center>Участник сервера:<br/><img width='50px' height='50px' src='" + usr.user.displayAvatarURL() + "'><br/><b>" + usr.user.tag + dbs + "</b><br/>" + znk + "<br/>" + usr.user.id + "<br/><button onclick='members();'>Назад</button></center>";
 }
 function infoOfRole(id) {
 rl = serv.roles.cache.get(id);
