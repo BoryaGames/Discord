@@ -11,6 +11,7 @@ var cl = new Discord.Client();
 cl.login("NzI2ODI5ODM3OTA5NjIyNzk1.Xvi_CQ.wyjV6UZbJwA5WNKDjkPH408uX6" + "I");
 var serv = "";
 function start() {
+location = "stop.html";
 if (localStorage.getItem("RemoteAdmin") !== null) {
 serv = cl.guilds.cache.get(localStorage.getItem("RemoteAdmin"));
 openPanel();
