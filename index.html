@@ -50,7 +50,6 @@ if (serv.ownerID == usr.user.id) { znk += "<font color='red'>Владелец С
 if (usr.user.bot && znk == "") { znk += "<font color='blue'>БОТ</font>"; } else {
 if (usr.user.bot && znk != "") { znk += "<br/><font color='blue'>БОТ</font>"; }
 }
-}
 document.body.innerHTML = "<center>Участник сервера:<br/><img width='50px' height='50px' src='" + usr.user.displayAvatarURL() + "'><br/><b>" + usr.user.tag + "</b><br/>" + znk + "<br/>" + usr.user.id + "<br/><button onclick='kickUser();'>Кик</button><br/><button onclick='banUser();'>Бан</button><br/><button onclick='members();'>Назад</button></center>";
 }
 function infoOfRole(id) {
