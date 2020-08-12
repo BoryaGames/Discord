@@ -5,26 +5,17 @@ body {
 background-color: lightskyblue;
 }
 </style>
-<script src="discord.12.1.1.min.js"></script>
 <script>
-var cl = new Discord.Client();
-cl.login("NzI2ODI5ODM3OTA5NjIyNzk1.Xvi_CQ.wyjV6UZbJwA5WNKDjkPH408uX6" + "I");
-function start() {
-var q = location.search.substring(1).split('&');
-for (var key in q) {
-if (q[key].startsWith("guild_id=")) {
-var w = q[key].substr(9);
-document.body.innerHTML = "<center><h3>Шаг <b>2</b> из <b>2</b>: <b>конец установки</b></h3><br/><br/><noscript>Включите <b>JavaScript</b> в настройках браузера!</noscript>Авторизация...</center>";
-localStorage.setItem("RemoteAdmin",w);
-document.body.innerHTML = "<center><h3>Шаг <b>2</b> из <b>2</b>: <b>конец установки</b></h3><br/><br/><noscript>Включите <b>JavaScript</b> в настройках браузера!</noscript>Авторизовано! <b>RemoteAdmin</b> успешно подключён к Вашему серверу!</center>";
+function send(data) {
+localStorage.setItem("RemoteAdmin",data);
+location.reload();
 }
+window.onload = function() {
+if (localStorage.getItem("RemoteAdmin") !== null) { location = "index.html"; }
 }
-document.querySelector('#link').innerHTML = "<a href='https://discord.com/api/oauth2/authorize?client_id=726829837909622795&permissions=8&redirect_uri=" + location.origin + location.pathname + "&scope=bot&response_type=code'>Нажмите для перехода</a>";
-}
-cl.on("ready",start);
 </script>
 </head>
 <body>
-<center><h3>Шаг <b>1</b> из <b>2</b>: <b>начало установки</b></h3><br/><br/><noscript>Включите <b>JavaScript</b> в настройках браузера!</noscript><div id="link">Генерация ссылки...</div></center>
+  <center>Для установки установите бота и введите ниже ID сервера!<br/><a href="https://discord.com/api/oauth2/authorize?client_id=726829837909622795&permissions=8&scope=bot">Установить бота</a><br/><br/><input type="text" id="id" placeholder="ID"><button onclick="send(document.querySelector('#id').value);">Отправить</button></center>
 </body>
 </html>
