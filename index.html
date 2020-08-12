@@ -15,26 +15,16 @@ if (localStorage.getItem("RemoteAdmin") !== null) {
 serv = cl.guilds.cache.get(localStorage.getItem("RemoteAdmin"));
 openPanel();
 } else {
-document.body.innerHTML = "<center>Ошибка авторизации!<br/><button onclick=\"location = 'start.html';\">Подключите 
-
-Ваш сервер к RemoteAdmin!</button></center>";
+document.body.innerHTML = "<center>Ошибка авторизации!<br/><button onclick=\"location = 'start.html';\">Подключите Ваш сервер к RemoteAdmin!</button></center>";
 }
 }
 function openPanel() {
-document.body.innerHTML = "<center><button onclick='members();'>Участники сервера</button><br/><button 
-
-onclick='roles();'>Роли сервера</button><br/><button onclick='channels();'>Каналы сервера</button><br/><button 
-
-onclick='chat();'>Чат</button></center>";
+document.body.innerHTML = "<center><button onclick='members();'>Участники сервера</button><br/><button onclick='roles();'>Роли сервера</button><br/><button onclick='channels();'>Каналы сервера</button><br/><button onclick='chat();'>Чат</button></center>";
 }
 function members() {
-document.body.innerHTML = "<center>Участники сервера:<br/><div id='members'></div><br/><button onclick='openPanel
-
-();'>Назад</button></center>";
+document.body.innerHTML = "<center>Участники сервера:<br/><div id='members'></div><br/><button onclick='openPanel();'>Назад</button></center>";
 for (var key of serv.members.cache.values()) {
-document.querySelector('#members').innerHTML += "<p onclick=\"infoOfUser('" + key.user.id + "');\">" + 
-
-key.user.username + "</p><br/>";
+document.querySelector('#members').innerHTML += "<p onclick=\"infoOfUser('" + key.user.id + "');\">" + key.user.username + "</p><br/>";
 }
 }
 function roles() {
@@ -42,19 +32,13 @@ document.body.innerHTML = "<center>Роли сервера:<br/><div id='roles'>
 
 ();'>Назад</button></center>";
 for (var key of serv.roles.cache.values()) {
-document.querySelector('#roles').innerHTML += "<p onclick=\"infoOfRole('" + key.id + "');\">" + key.name + 
-
-"</p><br/>";
+document.querySelector('#roles').innerHTML += "<p onclick=\"infoOfRole('" + key.id + "');\">" + key.name + "</p><br/>";
 }
 }
 function channels() {
-document.body.innerHTML = "<center>Каналы сервера:<br/><div id='channels'></div><br/><button onclick='openPanel
-
-();'>Назад</button></center>";
+document.body.innerHTML = "<center>Каналы сервера:<br/><div id='channels'></div><br/><button onclick='openPanel();'>Назад</button></center>";
 for (var key of serv.channels.cache.values()) {
-document.querySelector('#channels').innerHTML += "<p onclick=\"infoOfChannel('" + key.id + "');\">" + key.name + 
-
-"</p><br/>";
+document.querySelector('#channels').innerHTML += "<p onclick=\"infoOfChannel('" + key.id + "');\">" + key.name + "</p><br/>";
 }
 }
 var usr;
@@ -63,19 +47,11 @@ var ch;
 cl.on("ready",start);
 function infoOfUser(id) {
 usr = serv.members.cache.get(id);
-document.body.innerHTML = "<center>Участник сервера:<br/><img width='50px' height='50px' src='" + 
-
-usr.user.displayAvatarURL() + "'><br/><b>" + usr.user.tag + "</b><br/>" + usr.user.id + "<br/><button 
-
-onclick='kickUser();'>Кик</button><br/><button onclick='banUser();'>Бан</button><br/><button onclick='members
-
-();'>Назад</button></center>";
+document.body.innerHTML = "<center>Участник сервера:<br/><img width='50px' height='50px' src='" + usr.user.displayAvatarURL() + "'><br/><b>" + usr.user.tag + "</b><br/>" + usr.user.id + "<br/><button onclick='kickUser();'>Кик</button><br/><button onclick='banUser();'>Бан</button><br/><button onclick='members();'>Назад</button></center>";
 }
 function infoOfRole(id) {
 rl = serv.roles.cache.get(id);
-document.body.innerHTML = "<center>Роль сервера:<br/><b>" + rl.name + "</b><br/>" + rl.id + "<br/>Цвет: <font 
-
-color='" + rl.hexColor + "'>" + rl.hexColor + "</font><br/><button onclick='roles();'>Назад</button></center>";
+document.body.innerHTML = "<center>Роль сервера:<br/><b>" + rl.name + "</b><br/>" + rl.id + "<br/>Цвет: <font color='" + rl.hexColor + "'>" + rl.hexColor + "</font><br/><button onclick='roles();'>Назад</button></center>";
 }
 function infoOfChannel(id) {
 ch = serv.channels.cache.get(id);
@@ -111,9 +87,7 @@ nswf = "нет";
 } else {
 nswf = "да";
 }
-document.body.innerHTML = "<center>Канал сервера:<br/><b>" + ch.name + "</b><br/>" + ch.id + "<br/>Тип: " + typ + 
-
-"<br/>18+ канал: " + nswf + "<br/><button onclick='channels();'>Назад</button></center>";
+document.body.innerHTML = "<center>Канал сервера:<br/><b>" + ch.name + "</b><br/>" + ch.id + "<br/>Тип: " + typ + "<br/>18+ канал: " + nswf + "<br/><button onclick='channels();'>Назад</button></center>";
 }
 function kickUser() {
 usr.kick("Web Dashboard Kick");
@@ -133,19 +107,10 @@ infoOfRole(rl.id);
 }
 function chat() {
 var need_ch = prompt("ID чата:");
-document.body.innerHTML = "<center><div id='messages'></div><br/><button onclick=\"sendMessage('" + need_ch + "');
-
-\">Написать</button></center>";
-for (var key of cl.channels.cache.get(need_ch).messages.cache.values()) {
-document.querySelector('#messages').innerHTML += "[" + key.member.user.username + "] " + key.content + "<button 
-
-onclick=\"delMsg('" + key.channel.id + "','" + key.id + "');\">Удалить</button><br/>";
-}
+document.body.innerHTML = "<center><div id='messages'></div><br/><button onclick=\"sendMessage('" + need_ch + "');\">Написать</button></center>";
 cl.on("message",msg => {
 if (msg.channel.id == need_ch && msg.guild.id == serv.id) {
-document.querySelector('#messages').innerHTML += "[" + msg.member.user.username + "] " + msg.content + "<button 
-
-onclick=\"delMsg('" + msg.channel.id + "','" + msg.id + "');\">Удалить</button><br/>";
+document.querySelector('#messages').innerHTML += "[" + msg.member.user.username + "] " + msg.content + "<button onclick=\"delMsg('" + msg.channel.id + "','" + msg.id + "');\">Удалить</button><br/>";
 } else {}
 });
 }
@@ -153,9 +118,7 @@ function sendMessage(id) {
 cl.channels.cache.get(id).send(prompt("Текст:"));
 }
 function delMsg(id,id2) {
-cl.channels.cache.get(id).messages.cache.get(id2).delete().then(function(){alert("Успешно!");}).catch(function()
-
-{alert("Ошибка!");});
+cl.channels.cache.get(id).messages.cache.get(id2).delete().then(function(){alert("Успешно!");}).catch(function(){alert("Ошибка!");});
 }
 </script>
 </head>
