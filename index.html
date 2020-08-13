@@ -19,7 +19,7 @@ document.body.innerHTML = "<center>Ошибка авторизации!<br/><but
 }
 }
 function openPanel() {
-document.body.innerHTML = "<center><button onclick='members();'>Участники сервера</button><br/><button onclick='roles();'>Роли сервера</button><br/><button onclick='channels();'>Каналы сервера</button><br/><button onclick='chat();'>Чат</button></center>";
+document.body.innerHTML = "<center><button onclick='members();'>Участники сервера</button><br/><button onclick='roles();'>Роли сервера</button><br/><button onclick='channels();'>Каналы сервера</button><br/><button onclick='chat();'>Чат</button><br/><button onclick=\"localStorage.removeItem('RemoteAdmin');location = 'start.html';\">Выйти из панели управления этого сервера</button></center>";
 }
 function members() {
 document.body.innerHTML = "<center>Участники сервера:<br/><div id='members'></div><br/><button onclick='openPanel();'>Назад</button></center>";
