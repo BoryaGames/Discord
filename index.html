@@ -10,6 +10,7 @@ background-color: lightskyblue;
 var cl = new Discord.Client();
 cl.login("NzI2ODI5ODM3OTA5NjIyNzk1.Xvi_CQ.wyjV6UZbJwA5WNKDjkPH408uX6" + "I");
 var serv = "";
+var rai = "726829837909622795";
 function start() {
 if (localStorage.getItem("RemoteAdmin") !== null) {
 serv = cl.guilds.cache.get(localStorage.getItem("RemoteAdmin"));
@@ -50,7 +51,7 @@ var dbs = "<br/><button onclick='kickUser();'>Кик</button><br/><button onclic
 if (serv.ownerID == usr.user.id) { znk += "<font color='red'>Владелец Сервера</font>"; dbs = ""; }
 if (usr.user.bot && znk == "") { znk += "<font color='blue'>БОТ</font>"; dbs = "<br/><button onclick='kickUser();'>Удалить</button><br/><button onclick='banUser();'>Бан</button>"; } else {
 if (usr.user.bot && znk != "") { znk += "<br/><font color='blue'>БОТ</font>"; dbs = ""; }
-if (usr.user.id == "") { znk = "<font color='yellow'>RemoteAdmin</font>"; dbs = "<br/><button onclick='delRemoteAdmin();'>Удалить</button>"; }
+if (usr.user.id == rai) { znk = "<font color='yellow'>RemoteAdmin</font>"; dbs = "<br/><button onclick='delRemoteAdmin();'>Удалить</button>"; }
 }
 document.body.innerHTML = "<center>Участник сервера:<br/><img width='50px' height='50px' src='" + usr.user.displayAvatarURL() + "'><br/><b>" + usr.user.tag + dbs + "</b><br/>" + znk + "<br/>" + usr.user.id + "<br/><button onclick='members();'>Назад</button></center>";
 }
