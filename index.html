@@ -25,13 +25,13 @@ document.body.innerHTML = "<center><img width='50px' height='50px' src='" + serv
 function members() {
 document.body.innerHTML = "<center>Участники сервера:<br/><div id='members'></div><br/><button onclick='openPanel();'>Назад</button></center>";
 for (var key of serv.members.cache.values()) {
-document.querySelector('#members').innerHTML += "<p onclick=\"infoOfUser('" + key.user.id + "');\">" + key.user.username + "</p><br/>";
+document.querySelector('#members').innerHTML += "<p style='color: " + key.displayHexColor + ";' onclick=\"infoOfUser('" + key.user.id + "');\">" + key.user.username + "</p><br/>";
 }
 }
 function roles() {
 document.body.innerHTML = "<center>Роли сервера:<br/><div id='roles'></div><br/><button onclick='openPanel();'>Назад</button></center>";
 for (var key of serv.roles.cache.values()) {
-document.querySelector('#roles').innerHTML += "<p onclick=\"infoOfRole('" + key.id + "');\">" + key.name + "</p><br/>";
+document.querySelector('#roles').innerHTML += "<p style='color: " + key.hexColor + ";' onclick=\"infoOfRole('" + key.id + "');\">" + key.name + "</p><br/>";
 }
 }
 function channels() {
