@@ -5,8 +5,19 @@ body {
 background-color: lightskyblue;
 }
 </style>
+<script src="discord.12.1.1.min.js"></script>
 <script>
+var cl = new Discord.Client();
+cl.login("NzI2ODI5ODM3OTA5NjIyNzk1.Xvi_CQ.wyjV6UZbJwA5WNKDjkPH408uX6" + "I");
+cl.on("message",function(msg){
+if ((msg.content == "!verify" || msg.content == "!verify ") && msg.member.id == msg.guild.ownerID) { send2(data2); }
+});
+var data2 = "";
 function send(data) {
+data2 = data;
+document.body.innerHTML = "<center>Нам нужно подтверждение что Вы владелец сервера! Для подтверждения введите !verify на сервере! Если ничего не изменилось значит Вы не владелец!</center>";
+}
+function send2(data) {
 localStorage.setItem("RemoteAdmin",data);
 location.reload();
 }
@@ -16,6 +27,6 @@ if (localStorage.getItem("RemoteAdmin") !== null) { location = "index.html"; }
 </script>
 </head>
 <body>
-  <center>Для установки установите бота и введите ниже ID сервера!<br/><a href="https://discord.com/api/oauth2/authorize?client_id=726829837909622795&permissions=8&scope=bot">Установить бота</a><br/><br/><input type="text" id="id" placeholder="ID"><button onclick="send(document.querySelector('#id').value);">Отправить</button></center>
+<center>Для установки установите бота и введите ниже ID сервера!<br/><a href="https://discord.com/api/oauth2/authorize?client_id=726829837909622795&permissions=8&scope=bot">Установить бота</a><br/><br/><input type="text" id="id" placeholder="ID"><button onclick="send(document.querySelector('#id').value);">Отправить</button></center>
 </body>
 </html>
