@@ -139,9 +139,102 @@ localStorage.removeItem("RemoteAdmin");
 location = "start.html";
 }
 function rolePermissions() {
-perms = rl.permissions.FLAGS;
-console.log(perms);
-return "делаем...";
+if (rl.permissions.has("ADMINISTRATOR")) {
+return "все";
+}
+var q = "";
+if (rl.permissions.has("MANAGE_GUILD")) {
+q += "управлять сервером, ";
+}
+if (rl.permissions.has("MANAGE_MESSAGES")) {
+q += "управлять сообщениями, ";
+}
+if (rl.permissions.has("CREATE_INSTANT_INVITE")) {
+q += "приглашать людей, ";
+}
+if (rl.permissions.has("KICK_MEMBERS")) {
+q += "кикать людей, ";
+}
+if (rl.permissions.has("BAN_MEMBERS")) {
+q += "банить людей, ";
+}
+if (rl.permissions.has("MANAGE_CHANNELS")) {
+q += "управлять каналами, ";
+}
+if (rl.permissions.has("ADD_REACTIONS")) {
+q += "добавлять реакции, ";
+}
+if (rl.permissions.has("VIEW_AUDIT_LOG")) {
+q += "смотреть журнал аудита, ";
+}
+if (rl.permissions.has("PRIORITY_SPEAKER")) {
+q += "приоритет в голосовом чате, ";
+}
+if (rl.permissions.has("STREAM")) {
+q += "стримить в голосовом канале, ";
+}
+if (rl.permissions.has("VIEW_CHANNEL")) {
+q += "видеть каналы, ";
+}
+if (rl.permissions.has("SEND_MESSAGES")) {
+q += "отправлять сообщения, ";
+}
+if (rl.permissions.has("SEND_TTS_MESSAGES")) {
+q += "отправлять <b>TTS</b> сообщения, ";
+}
+if (rl.permissions.has("EMBED_LINKS")) {
+q += "отправлять <b>Embed</b> ссылки, ";
+}
+if (rl.permissions.has("ATTACH_FILES")) {
+q += "приклеплять файлы, ";
+}
+if (rl.permissions.has("READ_MESSAGE_HISTORY")) {
+q += "читать сообщения которые были написаны до открытия <b>Discord</b>, ";
+}
+if (rl.permissions.has("MENTION_EVERYONE")) {
+q += "пинговать <b>@everyone</b> и <b>@here</b>, ";
+}
+if (rl.permissions.has("USE_EXTERNAL_EMOJIS")) {
+q += "использовать эмодзи с других серверов у кого есть <b>Discord Nitro</b> или глобальные эмодзи, ";
+}
+if (rl.permissions.has("VIEW_GUILD_INSIGHTS")) {
+q += "смотреть <b>INSIGHTS</b> сервера, ";
+}
+if (rl.permissions.has("CONNECT")) {
+q += "подключаться к голосовым каналам, ";
+}
+if (rl.permissions.has("SPEAK")) {
+q += "разговаривать в голосовых каналах, ";
+}
+if (rl.permissions.has("MUTE_MEMBERS")) {
+q += "мутить участников в голосовых каналах, ";
+}
+if (rl.permissions.has("DEAFEN_MEMBERS")) {
+q += "отключать звук участникам в голосовых каналах, ";
+}
+if (rl.permissions.has("MOVE_MEMBERS")) {
+q += "перемещать участников в другие голосовые каналы, ";
+}
+if (rl.permissions.has("USE_VAD")) {
+q += "использовать <b>VAD</b> в голосовых каналах, ";
+}
+if (rl.permissions.has("CHANGE_NICKNAME")) {
+q += "менять свой ник на сервере, ";
+}
+if (rl.permissions.has("MANAGE_NICKNAMES")) {
+q += "менять ники других людей на сервере, ";
+}
+if (rl.permissions.has("MANAGE_ROLES")) {
+q += "управлять ролями, ";
+}
+if (rl.permissions.has("MANAGE_WEBHOOKS")) {
+q += "управлять вебхуками, ";
+}
+if (rl.permissions.has("MANAGE_EMOJIS")) {
+q += "управлять эмодзи на этом сервере, ";
+}
+if (q == "") { q = "никаких"; }
+return q;
 }
 </script>
 </head>
