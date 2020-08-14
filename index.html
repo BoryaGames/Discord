@@ -57,7 +57,7 @@ document.body.innerHTML = "<center>Участник сервера:<br/><img wid
 }
 function infoOfRole(id) {
 rl = serv.roles.cache.get(id);
-document.body.innerHTML = "<center>Роль сервера:<br/><b>" + rl.name + "</b><br/>" + rl.id + "<br/>Цвет: <font color='" + rl.hexColor + "'>" + rl.hexColor + "</font><br/><button onclick='roles();'>Назад</button></center>";
+document.body.innerHTML = "<center>Роль сервера:<br/><b>" + rl.name + "</b><br/>" + rl.id + "<br/>Цвет: <font color='" + rl.hexColor + "'>" + rl.hexColor + "</font><br/>Права: " + rolePermissions() + "<br/><button onclick='roles();'>Назад</button></center>";
 }
 function infoOfChannel(id) {
 ch = serv.channels.cache.get(id);
@@ -137,6 +137,11 @@ function delRemoteAdmin() {
 serv.leave();
 localStorage.removeItem("RemoteAdmin");
 location = "start.html";
+}
+function rolePermissions() {
+perms = rl.permissions.FLAGS;
+console.log(perms);
+return "делаем...";
 }
 </script>
 </head>
